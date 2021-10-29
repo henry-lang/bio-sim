@@ -60,10 +60,13 @@ class Simulation:
     def simulate():
         pass
 
+    def __repr__(self) -> str:
+        return str(self.board)
+
 
 def main():
     sim = Simulation(5, 25)
-    print(sim.board)
+    print(sim)
 
 
 main()
