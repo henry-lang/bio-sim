@@ -59,12 +59,12 @@ class Square:
         return None
 
     def simulate(self):
-        if not (best_predator := self.find_best_predator()):
-            return
-        if not (best_prey := self.find_best_prey(best_predator)):
-            return
-        print(best_predator)
-        print(best_prey)
+        while (best_predator := self.find_best_predator()) and (best_prey := self.find_best_prey(best_predator)):
+            print(f"{best_predator} eats {best_predator}")
+            self.predators.append(Predator(best_predator.skill - 1))
+            self.predators.append(Predator(best_predator.skill + 1))
+            self.prey.remove(best_prey)
+            self.predators.remove(best_predator)
 
     def __repr__(self) -> str:
         return f"[Predators: {str(self.predators)}, Prey: {str(self.prey)}]"
